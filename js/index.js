@@ -1,19 +1,9 @@
-$(document).ready(function() {
+$("nav ul li").click(function(){
+  var xcoord = $(this).data("xcoord");
 
-  function toggleSidebar() {
-    $(".button").toggleClass("active");
-    $("main").toggleClass("move-to-left");
-    $(".sidebar-item").toggleClass("active");
-  }
-
-  $(".button").on("click tap", function() {
-    toggleSidebar();
-  });
-
-  $(document).keyup(function(e) {
-    if (e.keyCode === 27) {
-      toggleSidebar();
-    }
-  });
+  $("nav div").stop().animate({marginLeft:xcoord}, 500, "easeInOutExpo");
+  $(this).addClass("active");
+  $("nav ul li").not(this).removeClass("active");
 
 });
+
